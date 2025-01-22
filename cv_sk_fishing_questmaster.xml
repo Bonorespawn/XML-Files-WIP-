@@ -1,0 +1,566 @@
+<!--  Mac an Iasgair  -->
+<xml>
+<!-- ===================== DECLARATION SECTION ====================== -->
+<stringSub originalString="ZONE_QUEST">
+<stringSubLine replacementString="Stillness"/>
+</stringSub>
+<stringSub originalString="DAILY_QUEST_1">
+<stringSubLine replacementString="Bronze Offering"/>
+</stringSub>
+<stringSub originalString="DAILY_QUEST_FISH_1">
+<stringSubLine replacementString="VARIOUS_1"/>
+</stringSub>
+<stringSub originalString="DAILY_QUEST_2">
+<stringSubLine replacementString="Silver Offering"/>
+</stringSub>
+<stringSub originalString="DAILY_QUEST_FISH_2">
+<stringSubLine replacementString="VARIOUS_2"/>
+</stringSub>
+<stringSub originalString="DAILY_QUEST_3">
+<stringSubLine replacementString="Golden Offering"/>
+</stringSub>
+<stringSub originalString="DAILY_QUEST_FISH_1">
+<stringSubLine replacementString="VARIOUS_3"/>
+</stringSub>
+<stringSub originalString="ELITE_QUEST_2">
+<stringSubLine replacementString="Secluded Sands"/>
+</stringSub>
+<start>
+<startCondition>QUEST_NOT_COMPLETE 2594</startCondition>
+<startGoto>START_QUEST</startGoto>
+</start>
+<start>
+<startCondition>STAGE_AVAILABLE 2594 0</startCondition>
+<startGoto>START_QUEST</startGoto>
+</start>
+<start>
+<startCondition>QUEST_COMPLETE 2641</startCondition>
+<startGoto>OPEN</startGoto>
+</start>
+<start>
+<startCondition>STAGE_AVAILABLE 2641 0</startCondition>
+<startGoto>OPEN_ZONE_QUEST</startGoto>
+</start>
+<!-- ===================== OPENING SECTION ====================== -->
+<line>
+<lineTag>OPEN</lineTag>
+<lineText>It is rare I see another person join us here let alone another fisher. Stick around here and I can show you what I am angling for.</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>Fishing Quests.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_FISHING</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Nothing.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<line>
+ <lineTag>OPEN_QUEST_1</lineTag>
+<lineText>You are not from around here are you?</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>No I am not.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_2</choiceGoto>
+</choice>
+<choice>
+<choiceOptions/>
+<choiceText>Let's skip it.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_10</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>OPEN_QUEST_2</lineTag>
+<lineText>Who are you?</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>[character_name]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_3</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>OPEN_QUEST_3</lineTag>
+<lineText>The real question however is who sent you?</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>Padean Maclir.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_4</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>OPEN_QUEST_4</lineTag>
+<lineText>Padean. Tell him I found what we were looking for.</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>Found what?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_5</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>OPEN_QUEST_5</lineTag>
+<lineText>If you must know the sunken ship off the beach had certain treasures.</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>Go on.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_6</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>OPEN_QUEST_6</lineTag>
+<lineText>Do not expect me to fill you in, that is Padean’s job.</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>Okay</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_QUEST_7</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>OPEN_QUEST_7</lineTag>
+<lineText>Confirm to him what we discussed.</lineText>
+<choice>
+<choiceOptions/>
+<choiceText>Will do.</choiceText>
+<choiceAction>QUEST_ADD_1 </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<!-- ===================== DAILY QUEST SECTION ====================== -->
+<!--  Daily Quest 1  -->
+<choice>
+<choiceCondition>QUEST_AVAILABLE 2642</choiceCondition>
+<choiceCondition>LEVEL_FISH_LESS_THAN 200</choiceCondition>
+<choiceOptions>[Q]</choiceOptions>
+<choiceText>[DAILY_QUEST_1]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>DAILY_QUEST_ADD_1</choiceGoto>
+</choice>
+<choice>
+<choiceCondition>QUEST_CURRENT 2642</choiceCondition>
+<choiceCondition>STAGE_NOT_AVAILABLE 2642 1</choiceCondition>
+<choiceOptions/>
+<choiceText>[DAILY_QUEST_1]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>DAILY_QUEST_CURRENT_1</choiceGoto>
+</choice>
+<choice>
+<choiceCondition>STAGE_AVAILABLE 2642 1</choiceCondition>
+<choiceOptions>[C]</choiceOptions>
+<choiceText>[DAILY_QUEST_1]</choiceText>
+<choiceAction>STAGE_COMPLETE 2642 1</choiceAction>
+<choiceGoto>DAILY_QUEST_COMPLETE_1</choiceGoto>
+</choice>
+<!--  Daily Quest 2  -->
+<choice>
+<choiceCondition>QUEST_AVAILABLE 2643</choiceCondition>
+<choiceCondition>LEVEL_FISH_LESS_THAN 200</choiceCondition>
+<choiceOptions>[Q]</choiceOptions>
+<choiceText>[DAILY_QUEST_2]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>DAILY_QUEST_ADD_2</choiceGoto>
+</choice>
+<choice>
+<choiceCondition>QUEST_CURRENT 2643</choiceCondition>
+<choiceCondition>STAGE_NOT_AVAILABLE 2643 3</choiceCondition>
+<choiceOptions/>
+<choiceText>[DAILY_QUEST_2]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>DAILY_QUEST_CURRENT_2</choiceGoto>
+</choice>
+<choice>
+<choiceCondition>STAGE_AVAILABLE 2643 3</choiceCondition>
+<choiceOptions>[C]</choiceOptions>
+<choiceText>[DAILY_QUEST_2]</choiceText>
+<choiceAction>STAGE_COMPLETE 2643 3</choiceAction>
+<choiceGoto>DAILY_QUEST_COMPLETE_2</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Nothing.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<!-- Daily Quest 3 -->
+<choice>
+<choiceCondition>QUEST_AVAILABLE 2644</choiceCondition>
+<choiceCondition>LEVEL_FISH_LESS_THAN 200</choiceCondition>
+<choiceOptions>[Q]</choiceOptions>
+<choiceText>[DAILY_QUEST_3]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>DAILY_QUEST_ADD_3</choiceGoto>
+</choice>
+<choice>
+<choiceCondition>QUEST_CURRENT 2644</choiceCondition>
+<choiceCondition>STAGE_NOT_AVAILABLE 2644 2</choiceCondition>
+<choiceOptions/>
+<choiceText>[DAILY_QUEST_3]</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>DAILY_QUEST_CURRENT_3</choiceGoto>
+</choice>
+<choice>
+<choiceCondition>STAGE_AVAILABLE 2644 2</choiceCondition>
+<choiceOptions>[C]</choiceOptions>
+<choiceText>[DAILY_QUEST_3]</choiceText>
+<choiceAction>STAGE_COMPLETE 2644 2</choiceAction>
+<choiceGoto>DAILY_QUEST_COMPLETE_3</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Nothing.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+
+
+<!--  Daily Quest 1  -->
+<line>
+<lineTag>DAILY_QUEST_ADD_1</lineTag>
+<lineText>Collect ten bronze marks of Nodens and five auroral trouts and return it to me for a reward.</lineText>
+<choice>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>No problem.</choiceText>
+<choiceAction>QUEST_ADD 2642</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Another time.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>DAILY_QUEST_CURRENT_1</lineTag>
+<lineText>Have you found that [DAILY_QUEST_FISH_1] yet? [FFFF33]Marks of Nodens can be found in any rippling water and auroral trouts in vortexes.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Not yet.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>DAILY_QUEST_COMPLETE_1</lineTag>
+<lineText>As promised the reward.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Goodbye.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<!--  Daily Quest 2  -->
+<line>
+<lineTag>DAILY_QUEST_ADD_2</lineTag>
+<lineText>Turn in five silver marks of Nodens and three aether pikes.</lineText>
+<choice>
+<choiceCondition>QUEST_AVAILABLE 2643</choiceCondition>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>No problem.</choiceText>
+<choiceAction>QUEST_ADD 2643</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Another time.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>DAILY_QUEST_CURRENT_2</lineTag>
+<lineText>Have you found that [DAILY_QUEST_FISH_1] yet? [FFFF33]Marks of Nodens can be found in any rippling water and aether pikes in vortexes.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Not yet.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>DAILY_QUEST_COMPLETE_2</lineTag>
+<lineText>As promised the reward.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Goodbye.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<!--  Daily Quest 3  -->
+<line>
+<lineTag>DAILY_QUEST_ADD_3</lineTag>
+<lineText>Turn in three gold marks of Nodens and three astral rays.</lineText>
+<choice>
+<choiceCondition>QUEST_AVAILABLE 2644</choiceCondition>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>No problem.</choiceText>
+<choiceAction>QUEST_ADD 2644</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Another time.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>DAILY_QUEST_CURRENT_3</lineTag>
+<lineText>Have you found that [DAILY_QUEST_FISH_1] yet? [FFFF33]Marks of Nodens can be found in any rippling water and astral rays in vortexes.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Not yet.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>DAILY_QUEST_COMPLETE_2</lineTag>
+<lineText>As promised the reward.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Goodbye.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+
+<!-- Elite Quest 1 -->
+<line>
+<lineTag>ELITE_QUEST_ADD_1</lineTag>
+<lineText>It's been quite some time since I've met an angler with your talents. You've made quite a name for yourself, [name].\n\nAnd yet here you are, still aspiring to greater and greater things, never stopping, always pushing on. It's an admirable quality, one that reminds me of my youth.\n\nI fell at the final hurdle, but perhaps you may have the skill I lacked...</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>Final hurdle?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_ADD_1_2</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_ADD_1_2</lineTag>
+<lineText>Long ago, in my youth, I traveled to a far off land, one so fantastical that you wouldn't believe me if I told you.\n\nThere I met a [00CC00]fisherman in his prime[-] who helped me hone my skills and inspired me to continue honing my skills. He gave me a gift before I left, an Ancient Rod of great power, and told me to "forge a path upwards", t'wards the peak of the craft.\n\nI never reached that peak, [name].</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>What happened?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_ADD_1_3</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_ADD_1_3</lineTag>
+<lineText>Hah! Age, mostly. I took my time, perhaps rested on my laurels a bit too often.\n\nAnd now I'm here, speaking with you, someone I believe has the drive to succeed where I failed. But I need you to prove it to me.\n\n[FFFF33]I need you to prove that you're skilled enough for me to pass this Ancient Rod to you.[-]</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>How?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_ADD_1_4</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_ADD_1_4</lineTag>
+<lineText>The fisherman spoke of ancient, magical fish that had been created by the God of Fishing, [CC00FF]Nodens[-] himself.\n\nIn all my years of searching I never found any that he spoke of, but perhaps you will have more luck than I did.\n\n[FFFF33]Find and bring me six Auroral Trout, and three Aether Pike, so that the Ancient Rod will recognise you as a rightful wielder, and I will gladly bestow it upon you.[-]</lineText>
+<choice>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>I shall.</choiceText>
+<choiceAction>QUEST_ADD 2636</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Another time.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_CURRENT_1</lineTag>
+<lineText>I see you're still hunting for those ancient fish, [name].\n\n[FFFF33]Find and bring me six Auroral Trout, and three Aether Pike, so that the Ancient Rod will recognise you as a rightful wielder, and I will gladly bestow it upon you.[-]\n\nThe fisherman mentioned that they were spawned from [FFFF33]Vortexes[-] that brimmed with mystical power, but I was never lucky enough to encounter one in my search.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Return</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_COMPLETE_1</lineTag>
+<lineText>By the gods, you've actually done it! What a beautiful sheen and colour to them too, astounding...\n\nI think you've more than proven your right to wield this Ancient Rod, [name].\n\nI shall use the magic of these legendary fish to attune you to the rod, marking it as yours.\n\nBut your challenge is not yet over, it has only just begun...</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>There's more?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_ADD_2</choiceGoto>
+</choice>
+</line>
+<!-- Elite Quest 2 -->
+<line>
+<lineTag>ELITE_QUEST_ADD_2</lineTag>
+<lineText>Now that the rod has chosen you, you have the ability to unlock it's true potential, to empower it and forge it into the relic it was destined to be.\n\n[FFFF33]Find and bring me seven Auroral Trout, four Aether Pike, and one Astral Ray, and I shall imbue the rod with the power of an Auroral Attunement, increasing it's potency.[-]</lineText>
+<choice>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>I shall.</choiceText>
+<choiceAction>QUEST_ADD 2637</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Another time.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_CURRENT_2</lineTag>
+<lineText>Remember, [name], merely using the Ancient Rod in it's current form is not enough to unlock it's full potential.\n\n[FFFF33]Find and bring me seven Auroral Trout, four Aether Pike, and one Astral Ray, and I shall imbue the rod with the power of an Auroral Attunement, increasing it's potency.[-]</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Return.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_COMPLETE_2</lineTag>
+<lineText>I can feel the power coursing through the air around you, [name]. All this excitement is making me feel young again!\n\nWith these legendary fish, I shall imbue the rod with the power of Auroral Attunement!\n\nAh, but you didn't think we were finished quite yet, did you [name]? Onwards and upwards!</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>What next?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_ADD_3</choiceGoto>
+</choice>
+</line>
+<!-- Elite Quest 3 -->
+<line>
+<lineTag>ELITE_QUEST_ADD_3</lineTag>
+<lineText>The rod still cries out for more, one who would unlock it's true potential, and you must heed that call!\n\n[FFFF33]Find and bring me eight Auroral Trout, four Aether Pike, and three Astral Rays, and I shall imbue the rod with the power of an Aetheric Attunement, increasing it's potency even further.[-]</lineText>
+<choice>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>I shall!</choiceText>
+<choiceAction>QUEST_ADD 2638</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Not right now.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_CURRENT_3</lineTag>
+<lineText>Remember, [name], while the Ancient Rod is stronger, it is still not fully living up to it's potential.\n\n[FFFF33]Find and bring me eight Auroral Trout, four Aether Pike, and three Astral Rays, and I shall imbue the rod with the power of an Aetheric Attunement, increasing it's potency even further.[-]</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Return</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_COMPLETE_3</lineTag>
+<lineText>Once again you amaze me [name]. It's truly a pleasure to be a part of this.\n\nWith these legendary fish, I shall imbue the rod with the power of an Aetheric Attunement!\n\nWe're almost there [name], one more attunement to go!</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>Onward!</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_ADD_4</choiceGoto>
+</choice>
+</line>
+<!-- Elite Quest 4 -->
+<line>
+<lineTag>ELITE_QUEST_ADD_4</lineTag>
+<lineText>The final attunement that I can bestow on the rod is up next, [name].\n\n[FFFF33]Find and bring me nine Auroral Trout, five Aether Pike, and four Astral Rays, and I shall imbue the rod with the power of an Astral Attunement, greatly increasing it's potency towards the peak of our craft![-]</lineText>
+<choice>
+<choiceOptions>[Y]</choiceOptions>
+<choiceText>Gladly!</choiceText>
+<choiceAction>QUEST_ADD 2639</choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Later.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_CURRENT_4</lineTag>
+<lineText>[name], while the Ancient Rod is brimming with power, it still hasn't reached it's full potential.\n\n[FFFF33]Find and bring me nine Auroral Trout, five Aether Pike, and four Astral Rays, and I shall imbue the rod with the power of an Astral Attunement, greatly increasing it's potency towards the peak of our craft![-]</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Return.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>OPEN_RODS</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_COMPLETE_4</lineTag>
+<lineText>With these legendary fish, I can finally imbue the Ancient Rod with it's Astral Attunement, bringing it to the peak of it's power with you as it's wielder.\n\nOdd...\n\n[FFFF33][name], the rod is stronger now, much stronger than when you brought it to me, but it still has something extra, something hidden away, a power straining just below the surface...[-]</lineText>
+<choice>
+<choiceOptions>[I]</choiceOptions>
+<choiceText>How is this possible?</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>ELITE_QUEST_COMPLETE_4_2</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>ELITE_QUEST_COMPLETE_4_2</lineTag>
+<lineText>It calls out for something more, for someone who can unlock it's final potential. I think it's saying...\n\n[FFFF33]The Otherworld?[-]\n\n[name], I believe the answer to this little riddle lies in the Otherworld. Travel there, and see if you can track down whomever the rod is seeking.</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>I shall.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<!-- ===================== END SECTION ====================== -->
+<line>
+<lineTag>START_QUEST</lineTag>
+<lineText>So, you're interested in Fishing are you? \n\nWell why dont you speak with my friend the [00CC00]Old Seafarer.[-] I heard that he has started to teach Fishing novices such as yourself. \n\n[FFFF33]You can find him in Lir's Reach near to the Smuggler's Rest Tavern, welcoming new visitors to the area.[-]</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Thank you.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag>AFTER</lineTag>
+<lineText>Goodbye, [class]!</lineText>
+<choice>
+<choiceOptions>[X]</choiceOptions>
+<choiceText>Goodbye.</choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto>-1</choiceGoto>
+</choice>
+</line>
+<line>
+<lineTag></lineTag>
+<lineText></lineText>
+<choice>
+<choiceOptions></choiceOptions>
+<choiceText></choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto></choiceGoto>
+</choice>
+<choice>
+<choiceOptions></choiceOptions>
+<choiceText></choiceText>
+<choiceAction> </choiceAction>
+<choiceGoto></choiceGoto>
+</choice>
+</line>
+</xml>
+
